@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :houses
   resources :users
   resources :vehicles
   resources :lands, only: [:index, :show, :create, :update, :destroy]

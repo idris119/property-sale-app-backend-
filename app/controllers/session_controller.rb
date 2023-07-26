@@ -1,4 +1,5 @@
 class SessionController < ApplicationController
+     skip_before_action :authorize, only: [:login]
 
     def login
       email = params[:email]

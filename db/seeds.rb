@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
 
 # vehicles
 image_urls = [
@@ -25,5 +26,7 @@ image_urls = [
       price: Faker::Commerce.price(range: 10000..50000, as_string: true),
       image: image_urls.sample
     )
-    vehicle.save!
+
+    vehicle.save!    
+end
     

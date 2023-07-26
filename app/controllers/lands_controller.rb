@@ -37,6 +37,36 @@ class LandsController < ApplicationController
         @land.destroy
         render json: { message: 'Land deleted successfully' }
     end
+
+    # Additional Actions
+  
+    # Search lands by location
+    def search_by_location
+      lands = Land.where("location LIKE ?", "%#{params[:location]}%")
+      render json: lands
+    end
+  
+    # Filter lands by price range
+    def filter_by_price_range
+      min_price = params[:min_price].to_f
+      max_price = params[:max_price].to_f
+      lands = Land.where(price: min_price..max_price)
+      render json: lands
+    end
+  
+    # Fetch featured lands
+    def featured_lands
+      lands = Land.where(featured: true)
+      render json: lands
+    end
+  
+    # Sort lands by size or price
+    def sort_lands
+      sort_by = params[:sort_by]
+      sort_order = params[:sort_order] || 'asc'
+      lands = Land.order("#{sort_by} #{sort_order}")
+      render json: lands
+    end
     
     private
     

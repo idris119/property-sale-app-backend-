@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_083610) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_26_195639) do
+  create_table "activities", force: :cascade do |t|
+    t.string "action"
+    t.datetime "activity_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "houses", force: :cascade do |t|
     t.string "type"
     t.integer "bedrooms"
@@ -30,7 +37,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_083610) do
     t.integer "price"
     t.text "description"
     t.string "amenities"
-    t.string "image"
     t.string "proximity_to_road"
     t.boolean "messaging"
     t.datetime "created_at", null: false
@@ -49,13 +55,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_083610) do
   end
 
   create_table "vehicles", force: :cascade do |t|
-    t.string "vehicle_type"
+    t.string "type"
     t.string "make"
     t.string "model"
     t.string "colour"
     t.integer "capacity"
     t.decimal "price"
-    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "featured"

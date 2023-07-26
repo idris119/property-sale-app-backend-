@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_07_25_202811) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_07_26_071142) do
+>>>>>>> ce68729c5e70a40451450f7655baa308ac3b0505
   create_table "houses", force: :cascade do |t|
     t.string "type"
     t.integer "bedrooms"
     t.integer "price"
     t.integer "distance"
     t.string "description"
+<<<<<<< HEAD
+=======
+    t.string "image"
+>>>>>>> ce68729c5e70a40451450f7655baa308ac3b0505
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_202811) do
     t.integer "price"
     t.text "description"
     t.string "amenities"
+    t.string "image"
     t.string "proximity_to_road"
     t.boolean "messaging"
     t.datetime "created_at", null: false
@@ -38,6 +47,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_202811) do
     t.string "name"
     t.string "email"
     t.string "phone_number"
+<<<<<<< HEAD
+=======
+    t.boolean "is_admin"
+>>>>>>> ce68729c5e70a40451450f7655baa308ac3b0505
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

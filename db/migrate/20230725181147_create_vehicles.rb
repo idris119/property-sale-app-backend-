@@ -7,6 +7,7 @@ class CreateVehicles < ActiveRecord::Migration[7.0]
       t.string :colour
       t.integer :capacity
       t.decimal :price
+      t.string :image
 
       t.timestamps
     end

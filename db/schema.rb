@@ -48,12 +48,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_075508) do
   end
 
   create_table "vehicles", force: :cascade do |t|
-    t.string "type"
+    t.string "vehicle_type"
     t.string "make"
     t.string "model"
     t.string "colour"
     t.integer "capacity"
     t.decimal "price"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -42,17 +42,24 @@ class HousesController < ApplicationController
     render json: houses
   end
 
+   # Filter houses by price range
   def filter_by_price_range
     min_price = params[:min_price].to_f
     max_price = params[:max_price].to_f
     houses = House.where(price: min_price..max_price)
     render json: houses
   end
-
+  # Fetch featured houses
   def featured_houses
     houses = House.where(featured: true)
     render json: houses
-  end  
+  end
+  # Popular Houses: Fetch and display houses based on popularity (number of views)
+  def popular_houses
+    houses = House.order(views: :desc).limit(10)
+    render json: houses
+  end
+
 
   private
 

@@ -7,6 +7,7 @@ class CreateLands < ActiveRecord::Migration[7.0]
       t.integer :price
       t.text :description
       t.string :amenities
+      t.string :image
       t.string :proximity_to_road
       t.boolean :messaging
 

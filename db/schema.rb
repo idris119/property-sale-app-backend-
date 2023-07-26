@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_195214) do
     t.integer "price"
     t.text "description"
     t.string "amenities"
+    t.string "image"
     t.string "proximity_to_road"
     t.boolean "messaging"
     t.datetime "created_at", null: false

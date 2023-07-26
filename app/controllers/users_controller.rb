@@ -7,15 +7,13 @@ class UsersController < ApplicationController
 
    # get a single user
    def show
-       user = user.find_by(id: params[:id])
-       if user 
-           render json: user
-
-       else
-          render json: {error: "user not found"}, status: :not_found
-          
-       end  
-   end 
+    user = User.find_by(id: params[:id])
+    if user 
+      render json: user
+    else
+      render json: { error: "User not found" }, status: :not_found
+    end  
+  end  
 
    def create 
         user = User.create(name: params[:name], email: params[:email], phone_number: params[:phone_number],password: params[:password])
@@ -26,7 +24,7 @@ class UsersController < ApplicationController
         end
    end
 
-   def loggedin
+   def loggedin_user
      user = User.find_by(id: session[:user_id] ) 
      if(user)
         render json: {loggedin: true, user: user}

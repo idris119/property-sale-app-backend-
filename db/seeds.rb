@@ -44,3 +44,35 @@ image_urls = [
     vehicle.save!    
 end
     
+# houses
+
+image_urls = [
+  'https://www.tatucity.com/wp-content/uploads/Kijani-1-300x225.jpg',
+  'https://www.tatucity.com/wp-content/uploads/DJI_0727-1-525x350.jpg',
+  'https://langatalinkrealestate.com/wp-content/uploads/2023/07/KAR222S-1.jpg',
+  'https://langatalinkrealestate.com/wp-content/uploads/2022/08/KAR288S-5.jpg',
+  'https://i.roamcdn.net/prop/brk/listing-medium-600w-watermark/1192c255c4acfe25e668a07868047793/-/prod-property-core-backend-media-brk/5461890/aadb8099-1ee2-4952-a536-7c1edcd445fb.jpg',
+  'https://images.homes.com/listings/117/1878522133-861573751-original.jpg',
+  'https://images.homes.com/listings/111/5554001233-463318751-original.jpg',
+  'https://images.homes.com/listings/111/3639998523-456642651-original.jpg',
+  'https://images.homes.com/listings/117/4284052113-114394021-original.jpg',
+  'https://images.homes.com/listings/111/4680485072-311249631-original.jpg',
+  'https://www.remax-kenya.co.ke/Handlers/GTImageHandler.ashx?src=4a7ORDRuOVqq6YTE6HBgknJ6ATvA9kiZnR29g2cT3C5RF8lNPgV41c9BcPhDTFD3cueyuY%2BXqwYHa0R6dSNvpHdMWx9Q3TTly9W1pkwb0raGWQ0fAh9y5MP%2BqjO5PRcYQWm%2FYzXIhTQ9kQR286QN2vKkHYCfYQiIc%2F0%2FiLUVacHrxCwYAVizGATvXsoFG5yrOzFAHEphWcRupuicYNKgFQ%3D%3D',
+  ]
+  def generate_house_attributes(image_url)
+    {
+      type: 'House',
+      bedrooms: rand(2..5),
+      price: rand(150_000..600_000),
+      distance: rand(1..10),
+      description: Faker::Lorem.paragraph(sentence_count: 2),
+      image: image_url,
+      is_approved: [true, false].sample
+    }
+  end
+  
+  # Create 15 houses with random attributes
+  15.times do |index|
+    house_attributes = generate_house_attributes(image_urls.sample)
+    House.create(house_attributes)
+  end

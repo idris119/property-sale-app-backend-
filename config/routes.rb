@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :vehicles
   resources :lands, only: [:index, :show, :create, :update, :destroy]
+  resources :payments, only: [:create]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
   get "/approvedhouses", to:"houses#approvedhouses"
   get "/approvedlands", to:"lands#approvedlands"
   get "/approvedvehicles", to:"vehicles#approvedvehicles"
-
+  post 'payments/callback', to: 'payments#callback'
 
 
 end

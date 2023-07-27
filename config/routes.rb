@@ -9,5 +9,13 @@ Rails.application.routes.draw do
   post "/login", to:"session#login"
   delete "/logout", to:"session#logout"
   get "/current_user", to:"users#loggedin_user"
+  patch "/houses/approve/:id", to:"houses#approve"
+  patch "/lands/approve/:id", to:"lands#approve"
+  patch "/vehicles/approve/:id", to:"vehicles#approve"
+  get "/approvedhouses", to:"houses#approvedhouses"
+  get "/approvedlands", to:"lands#approvedlands"
+  get "/approvedvehicles", to:"vehicles#approvedvehicles"
+
+
 
 end

@@ -1,11 +1,32 @@
 class LandsController < ApplicationController
-    before_action :set_land, only: [:show, :update, :destroy]
+    before_action :set_land, only: [:index, :show]
     
     # GET /lands
     def index
         @lands = Land.all
         render json: @lands
     end
+
+    def approvedlands
+        lands = Land.where(is_approved: true)
+        render json: lands
+      end
+
+      def approve
+        current_user=User.find_by(id: session[:user_id])
+        if current_user.is_admin==true
+          land = Land.find_by(id: params[:id]) 
+          if land
+              land.update(is_approved: true)
+              render json: {success: "land Approved... Can be seen by users"}, status: :created
+          else
+              render json: {error: "land not found"}, status: :not_found
+          end
+        else
+            render json: {error: "Only admin can perform such operation"}, status: :not_found
+        end
+      end
+      
     
     # GET /lands/1
     def show
@@ -45,7 +66,7 @@ class LandsController < ApplicationController
       lands = Land.where("location LIKE ?", "%#{params[:location]}%")
       render json: lands
     end
-  
+
     # Filter lands by price range
     def filter_by_price_range
       min_price = params[:min_price].to_f
@@ -71,8 +92,8 @@ class LandsController < ApplicationController
     private
     
     def set_land
-        @land = Land.find(params[:id])
-    end
+        @land = Land.find_by(id: params[:id])
+      end
     
     def land_params
         params.require(:land).permit(:image, :name, :location, :size, :price, :description, :amenities, :proximity_to_road, :messaging)

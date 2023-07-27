@@ -10,6 +10,7 @@ class CreateLands < ActiveRecord::Migration[7.0]
       t.string :image
       t.string :proximity_to_road
       t.boolean :messaging
+      t.boolean :is_approved, default: false
 
       t.timestamps
     end

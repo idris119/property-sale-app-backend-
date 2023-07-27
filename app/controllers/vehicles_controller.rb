@@ -1,10 +1,17 @@
 class VehiclesController < ApplicationController
+  before_action :set_vehicle, only: [:index, :show]
 
     # get all vehicles
     def index
         vehicles = Vehicle.all
         render json: vehicles
     end
+
+    def approvedvehicles
+      vehicles = Vehicle.where(is_approved: true)
+      render json: vehicles
+    end
+    
 
     # get vehicle by id
     def show
@@ -39,6 +46,21 @@ class VehiclesController < ApplicationController
           head :no_content, status: :no_content
         else
           render json: { error: "Failed to delete vehicle" }, status: :unprocessable_entity
+        end
+      end
+
+      def approve
+        current_user=User.find_by(id: session[:user_id])
+        if current_user.is_admin==true
+          vehicle = Vehicle.find_by(id: params[:id]) #value or null
+          if vehicle
+              vehicle.update(is_approved: true)
+              render json: {success: "vehicle Approved... Can be seen by users"}, status: :created
+          else
+              render json: {error: "vehicle not found"}, status: :not_found
+          end
+        else
+            render json: {error: "Only admin can perform such operation"}, status: :not_found
         end
       end
 

@@ -1,10 +1,16 @@
 class HousesController < ApplicationController
-  before_action :set_house, only: [:show, :edit, :update, :destroy]
+  before_action :set_house, only: [:index, :show]
 
   def index
     houses = House.all
     render json: houses
   end
+
+  def approvedhouses
+    houses = House.where(is_approved: true)
+    render json: houses
+  end
+
 
   def show
     render json: @house
@@ -32,6 +38,21 @@ class HousesController < ApplicationController
       head :no_content, status: :no_content
     else
       render json: { error: "Failed to delete House" }, status: :unprocessable_entity
+    end
+  end
+
+  def approve
+    current_user=User.find_by(id: session[:user_id])
+    if current_user.is_admin==true
+      house = House.find_by(id: params[:id]) 
+      if house
+          house.update(is_approved: true)
+          render json: {success: "house Approved... Can be seen by users"}, status: :created
+      else
+          render json: {error: "house not found"}, status: :not_found
+      end
+    else
+        render json: {error: "Only admin can perform such operation"}, status: :not_found
     end
   end
 

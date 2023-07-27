@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_195639) do
     t.integer "distance"
     t.string "description"
     t.string "image"
+    t.boolean "is_approved", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "featured", default: false
@@ -37,8 +38,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_195639) do
     t.integer "price"
     t.text "description"
     t.string "amenities"
+    t.string "image"
     t.string "proximity_to_road"
     t.boolean "messaging"
+    t.boolean "is_approved", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "featured"
@@ -55,12 +58,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_195639) do
   end
 
   create_table "vehicles", force: :cascade do |t|
-    t.string "type"
+    t.string "vehicle_type"
     t.string "make"
     t.string "model"
     t.string "colour"
     t.integer "capacity"
     t.decimal "price"
+    t.string "image"
+    t.boolean "is_approved", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "featured"

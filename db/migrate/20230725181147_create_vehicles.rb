@@ -8,6 +8,7 @@ class CreateVehicles < ActiveRecord::Migration[7.0]
       t.integer :capacity
       t.decimal :price
       t.string :image
+      t.boolean :is_approved, default: false
 
       t.timestamps
     end

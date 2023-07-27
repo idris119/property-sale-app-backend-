@@ -95,7 +95,7 @@ class LandsController < ApplicationController
         @land = Land.find_by(id: params[:id])
       end
     
-    def land_params
-        params.require(:land).permit(:image, :name, :location, :size, :price, :description, :amenities, :proximity_to_road, :messaging)
-    end
+      def land_params
+        params.permit(:image, :name, :location, :size, :price, :description, :amenities, :proximity_to_road, :messaging)
+      end
 end

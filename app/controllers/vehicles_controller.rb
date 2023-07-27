@@ -96,11 +96,11 @@ class VehiclesController < ApplicationController
         render json: vehicles
       end
 
-    private
-    def find_vehicle
-        vehicle.find_by(id: params[:id])
-    end
-
+      private
+      def find_vehicle
+        Vehicle.find_by(id: params[:id])
+      end
+      
     def vehicle_params
       params.permit(:vehicle_type, :make, :model, :colour, :capacity, :price)
     end

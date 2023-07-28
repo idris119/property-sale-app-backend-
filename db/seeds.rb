@@ -69,7 +69,7 @@ Land.create([
     proximity_to_road: "2 kilometer",
     messaging: false,
     featured: false
-  },ffeerrr3r3r32
+  },
   
   {
     name: "Home land",
@@ -87,3 +87,33 @@ Land.create([
 
 # Output a message to indicate that seed data has been created
 puts "Seed data for lands table created successfully."
+
+#Houses
+houses_seed_data = [
+  {
+    type: "Villa",
+    bedrooms: 5,
+    price: 35000000,
+    distance: 6,
+    description: "Beautiful villa with a garden, with 5 bedrooms, all master ensuite, specious kitchen and laundry area",
+    image: "https://images.pamgolding.co.za/content/properties/202306/2077120/h/2077120_h_1.jpg?w=600&quality=75",
+    is_approved: true,
+    featured: true,
+    location: "Kitisuru, Kenya"
+  },
+  {
+    type: "Apartment",
+    bedrooms: 3,
+    price: 9000000,
+    distance: 5,
+    description: "Cozy apartment 5Kms from the road with 4 bedrooms all masetr ensuite",
+    image: "https://images.pamgolding.co.za/content/properties/202211/2039194/h/2039194_h_1.jpg?w=600&quality=75",
+    is_approved: true,
+    featured: false,
+    location: "Syokimau"
+  }
+]
+
+# You can add more houses to the array if needed...
+
+puts "Sample seed data array created!"

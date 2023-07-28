@@ -8,7 +8,10 @@
 require 'faker'
 
 
-
+puts "🏠 🚗 Seeding housing and vehicle data..."
+# Clear existing data
+House.destroy_all
+Vehicle.destroy_all
 # vehicles
 image_urls = [
     'https://i.pinimg.com/236x/ef/ac/5e/efac5eff9db59202bb7e8941b6696470.jpg',
@@ -43,4 +46,35 @@ image_urls = [
 
     vehicle.save!    
 end
+
+houses_data = []
+
+house_urls = [
+  'https://media.istockphoto.com/id/182218173/photo/row-of-townhouses.jpg?s=612x612&w=0&k=20&c=WtWJgO4aauBDVyu4Py9lxuRdtJ4-IPqEygWrIy7Gox8=',
+  'https://media.istockphoto.com/id/155419616/photo/cute-house.jpg?s=612x612&w=is&k=20&c=E4gASf76J7OPRA_6pPWX4_EqeyQVA_hEaVrvN0dlzXk=',
+  'https://media.gettyimages.com/id/157422319/photo/suburbia-click-for-related-images.jpg?s=612x612&w=gi&k=20&c=KAFKnjE5C5dvPsmwEa89szSkv1phJCPUPRntfoOth5Y=',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSfGHSgGqZsX26buHg364jMWpegIiZvIotg-xpgEjN&s',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiILyYzHBJu4padfCXFY9RmDcTmmaxxR0vR6iHEqKJ&s',
+  'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+  'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+  'https://images.unsplash.com/photo-1598228723793-52759bba239c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80'
+]
+
+10.times do
+  houses_data << {
+    house_type: Faker::House.room,
+    bedrooms: Faker::Number.between(from: 1, to: 6),
+    price: Faker::Number.between(from: 1000000, to: 10000000),
+    distance: Faker::Number.decimal(l_digits: 1, r_digits: 1),
+    description: Faker::Lorem.sentence,
+    image: house_urls.sample
+  }
+end
+
+# Seed the data into the House model
+houses_data.each do |house_data|
+  House.create!(house_data)
+end
+
+puts "✅ Seed data created successfully."
     

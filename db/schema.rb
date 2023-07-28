@@ -19,9 +19,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_195639) do
   end
 
   create_table "houses", force: :cascade do |t|
-    t.string "type"
-    t.integer "bedrooms"
+    t.string "location"
+    t.integer "size"
     t.integer "price"
+    t.integer "bedrooms"
+    t.integer "bathrooms"
+    t.string "amenities"
+    t.string "images"
     t.integer "distance"
     t.string "description"
     t.string "image"

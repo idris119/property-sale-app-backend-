@@ -43,7 +43,8 @@ image_urls = [
 
     vehicle.save!    
 end
-    
+
+
 # houses
 
 image_urls = [
@@ -58,21 +59,25 @@ image_urls = [
   'https://images.homes.com/listings/117/4284052113-114394021-original.jpg',
   'https://images.homes.com/listings/111/4680485072-311249631-original.jpg',
   'https://www.remax-kenya.co.ke/Handlers/GTImageHandler.ashx?src=4a7ORDRuOVqq6YTE6HBgknJ6ATvA9kiZnR29g2cT3C5RF8lNPgV41c9BcPhDTFD3cueyuY%2BXqwYHa0R6dSNvpHdMWx9Q3TTly9W1pkwb0raGWQ0fAh9y5MP%2BqjO5PRcYQWm%2FYzXIhTQ9kQR286QN2vKkHYCfYQiIc%2F0%2FiLUVacHrxCwYAVizGATvXsoFG5yrOzFAHEphWcRupuicYNKgFQ%3D%3D',
-  ]
-  def generate_house_attributes(image_url)
-    {
-      type: 'House',
-      bedrooms: rand(2..5),
-      price: rand(150_000..600_000),
-      distance: rand(1..10),
-      description: Faker::Lorem.paragraph(sentence_count: 2),
-      image: image_url,
-      is_approved: [true, false].sample
-    }
-  end
-  
-  # Create 15 houses with random attributes
-  15.times do |index|
-    house_attributes = generate_house_attributes(image_urls.sample)
-    House.create(house_attributes)
-  end
+]
+
+def generate_house_attributes(image_url)
+  {
+    location: Faker::Address.city,
+    size: rand(100..500),
+    bedrooms: rand(2..5),
+    bathrooms: rand(1..3),
+    price: rand(150_000..600_000),
+    distance: rand(1..10),
+    description: Faker::Lorem.paragraph(sentence_count: 2),
+    amenities: Faker::Lorem.words(number: rand(1..5)).join(', '),
+    images: image_url,
+    is_approved: [true, false].sample
+  }
+end
+
+# Create 15 houses with random attributes
+15.times do
+  house_attributes = generate_house_attributes(image_urls.sample)
+  House.create(house_attributes)
+end

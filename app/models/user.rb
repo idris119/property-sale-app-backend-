@@ -2,6 +2,7 @@ class User < ApplicationRecord
     has_many :vehicles
     has_many :lands
     has_many :houses
+    has_many :chat_messages
     has_secure_password
 
     validates :name, presence: true

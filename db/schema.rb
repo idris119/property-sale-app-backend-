@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_195639) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_28_100000) do
   create_table "activities", force: :cascade do |t|
     t.string "action"
     t.datetime "activity_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "message"
+    t.boolean "is_user_message", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chat_messages_on_user_id"
   end
 
   create_table "houses", force: :cascade do |t|
@@ -71,4 +80,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_195639) do
     t.boolean "featured"
   end
 
+  add_foreign_key "chat_messages", "users"
 end

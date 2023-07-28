@@ -110,7 +110,7 @@ houses_seed_data = [
     image: "https://images.pamgolding.co.za/content/properties/202211/2039194/h/2039194_h_1.jpg?w=600&quality=75",
     is_approved: true,
     featured: false,
-    location: "Syokimau"
+    location: "Syokimau, Kenya"
   }
 ]
 

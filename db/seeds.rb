@@ -11,7 +11,7 @@ User.create!(
   name: 'Baruch',
   email: 'baruch@gmail.com',
   phone_number: "0797877271",
-  password: 'bbbb',
+  password: 'bbbbbb',
   is_admin: false
 )
 
@@ -19,7 +19,7 @@ User.create!(
   name: 'Consolatta',
   email: 'consolatta@gmail.com',
   phone_number: "0797877272",
-  password: 'cccc',
+  password: 'cccccc',
   is_admin: false
 )
 
@@ -27,7 +27,7 @@ User.create!(
   name: 'John',
   email: 'john@gmail.com',
   phone_number: "0797877273",
-  password: 'jjjjj',
+  password: 'jjjjjj',
   is_admin: false
 )
 
@@ -35,7 +35,7 @@ User.create!(
   name: 'Tim',
   email: 'todongoonditi@gmail.com',
   phone_number: "0797877270",
-  password: '12345',
+  password: 'timodongo',
   is_admin: true
 )
 

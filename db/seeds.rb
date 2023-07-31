@@ -7,6 +7,38 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
+# users
+User.create!(
+  name: 'Baruch',
+  email: 'baruch@gmail.com',
+  phone_number: "0797877271",
+  password: 'bbbbbb',
+  is_admin: false
+)
+
+User.create!(
+  name: 'Consolatta',
+  email: 'consolatta@gmail.com',
+  phone_number: "0797877272",
+  password: 'cccccc',
+  is_admin: false
+)
+
+User.create!(
+  name: 'John',
+  email: 'john@gmail.com',
+  phone_number: "0797877273",
+  password: 'jjjjjj',
+  is_admin: false
+)
+
+User.create!(
+  name: 'Tim',
+  email: 'todongoonditi@gmail.com',
+  phone_number: "0797877270",
+  password: 'timodongo',
+  is_admin: true
+)
 
 
 # vehicles

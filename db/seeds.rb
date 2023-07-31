@@ -70,7 +70,6 @@ Land.create([
     messaging: false,
     featured: false
   },
-  
   {
     name: "Home land",
     location: "Kitsuru",

@@ -58,9 +58,11 @@ class HousesController < ApplicationController
 
   # Additional Actions
 
-  def search_by_location
-    houses = House.where("location LIKE ?", "%#{params[:location]}%")
-    render json: houses
+  def search
+    search_query = params[:q]
+    # Use the 'Vehicle' model to search the vehicles table in the database
+    results = House.where("name LIKE ?", "%#{search_query}%")
+    render json: results
   end
 
    # Filter houses by price range

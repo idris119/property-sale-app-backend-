@@ -62,9 +62,11 @@ class LandsController < ApplicationController
     # Additional Actions
   
     # Search lands by location
-    def search_by_location
-      lands = Land.where("location LIKE ?", "%#{params[:location]}%")
-      render json: lands
+    def search
+      search_query = params[:q]
+      # Use the 'Vehicle' model to search the vehicles table in the database
+      results = Land.where("name LIKE ?", "%#{search_query}%")
+      render json: results
     end
 
     # Filter lands by price range

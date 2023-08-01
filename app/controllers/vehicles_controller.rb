@@ -63,9 +63,11 @@ class VehiclesController < ApplicationController
   # Additional Actions
 
   # Search vehicles by location
-  def search_by_location
-    vehicles = Vehicle.where("location LIKE ?", "%#{params[:location]}%")
-    render json: vehicles
+  def search
+    search_query = params[:q]
+    # Use the 'Vehicle' model to search the vehicles table in the database
+    results = Vehicle.where("name LIKE ?", "%#{search_query}%")
+    render json: results
   end
 
   # Filter vehicles by price range

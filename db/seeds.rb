@@ -48,7 +48,7 @@ end
 Land.create([
   {
     name: "Kitengela Milimani Quater Acre",
-    location: "Kajiando County",
+    location: "Kajiado County",
     size: 0.25,
     price: 1500000,
     description: "A beautiful piece of land in the heart of Kitengela Town.",
@@ -56,7 +56,9 @@ Land.create([
     image: "https://images.prop24.com/itwqrq72tk5yakjz2ijhifsmvy/Crop237x198",
     proximity_to_road: "5 kilometers",
     messaging: true,
-    featured: true
+    is_approved: true,
+    featured: true,
+
   },
   {
     name: "Kitengela Milimani Phase 4",
@@ -68,6 +70,7 @@ Land.create([
     image: "https://images.prop24.com/qh7zh6waeolpnwfp7mbuhmucja/Crop237x198",
     proximity_to_road: "2 kilometer",
     messaging: false,
+    is_approved: true,
     featured: false
   },
   {
@@ -80,6 +83,7 @@ Land.create([
     image: "https://images.prop24.com/xx23bi2gvw6yepcbrkgoqldt5e/Crop237x198",
     proximity_to_road: "1 kilometer",
     messaging: true,
+    is_approved: true,
     featured: true
   }
 ])

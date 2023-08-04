@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get "/approvedhouses", to:"houses#approvedhouses"
   get "/approvedlands", to:"lands#approvedlands"
   get "/approvedvehicles", to:"vehicles#approvedvehicles"
-  get "/Properties/House",to:""
   #Search Component Routes
   get 'search/houses', to: 'houses#search'
   get 'search/vehicles', to: 'vehicles#search'

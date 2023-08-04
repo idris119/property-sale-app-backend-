@@ -18,7 +18,7 @@ use Rack::Cors do
     end
   
     allow do
-      origins 'http://localhost:3001','127.0.0.1:3001'
+      origins '*'
       resource '/public/*', headers: :any, methods: :get
   
       # Only allow a request for a specific host

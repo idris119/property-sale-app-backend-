@@ -1,5 +1,5 @@
 class LandsController < ApplicationController
-    before_action :set_land, only: [:index, :show]
+    before_action :set_land, only: [:index, :show, :search]
     
     # GET /lands
     def index

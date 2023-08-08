@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'search/houses', to: 'houses#search'
   get 'search/vehicles', to: 'vehicles#search'
   get 'search/land', to: 'land#search'
+  get '/search', to: 'application#search'
 
 
 

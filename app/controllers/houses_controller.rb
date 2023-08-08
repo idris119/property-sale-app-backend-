@@ -5,11 +5,17 @@ class HousesController < ApplicationController
     houses = House.all
     render json: houses
   end
-
+  
   def approvedhouses
-    houses = House.where(is_approved: true)
-    render json: houses
+    approved_houses = House.where(is_approved: true)
+    render json: approved_houses
   end
+
+  def housesneedingapproval
+    houses_needing_approval = House.where(is_approved: false)
+    render json: houses_needing_approval
+  end
+
 
 
   def show
@@ -91,6 +97,6 @@ class HousesController < ApplicationController
   end
 
   def house_params
-    params.permit(:location, :size, :price, :bedrooms, :bathrooms, :amenities, :images, :distance, :description)
+    params.permit(:location, :size, :price, :bedrooms, :bathrooms, :amenities, :image, :distance, :description)
   end
 end

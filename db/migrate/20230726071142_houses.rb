@@ -7,11 +7,10 @@ class Houses < ActiveRecord::Migration[7.0]
       t.integer :bedrooms
       t.integer :bathrooms
       t.string :amenities
-      t.string :images
+      t.string :image
 
       t.integer :distance
       t.string  :description
-      t.string :image 
       t.boolean :is_approved, default: false
 
       t.timestamps

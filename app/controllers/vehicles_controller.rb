@@ -12,6 +12,12 @@ class VehiclesController < ApplicationController
     render json: vehicles
   end
 
+  def vehiclesneedingapproval
+    vehicles_needing_approval = Vehicle.where(is_approved: false)
+    render json: vehicles_needing_approval
+  end
+
+
   # get vehicle by id
   def show
     render json: @vehicle
@@ -106,6 +112,6 @@ class VehiclesController < ApplicationController
   end
 
   def vehicle_params
-    params.permit(:vehicle_type, :make, :model, :colour, :capacity, :price)
+    params.permit(:vehicle_type, :make, :model, :colour, :capacity, :image, :price)
   end
 end

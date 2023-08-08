@@ -1,5 +1,4 @@
 # houses
-
 image_urls = [
   'https://www.tatucity.com/wp-content/uploads/Kijani-1-300x225.jpg',
   'https://www.tatucity.com/wp-content/uploads/DJI_0727-1-525x350.jpg',
@@ -14,7 +13,7 @@ image_urls = [
   'https://www.remax-kenya.co.ke/Handlers/GTImageHandler.ashx?src=4a7ORDRuOVqq6YTE6HBgknJ6ATvA9kiZnR29g2cT3C5RF8lNPgV41c9BcPhDTFD3cueyuY%2BXqwYHa0R6dSNvpHdMWx9Q3TTly9W1pkwb0raGWQ0fAh9y5MP%2BqjO5PRcYQWm%2FYzXIhTQ9kQR286QN2vKkHYCfYQiIc%2F0%2FiLUVacHrxCwYAVizGATvXsoFG5yrOzFAHEphWcRupuicYNKgFQ%3D%3D',
 ]
 
-def generate_house_attributes(image_url)
+def generate_house_attributes(image_urls)
   {
     location: Faker::Address.city,
     size: rand(100..500),
@@ -24,14 +23,14 @@ def generate_house_attributes(image_url)
     distance: rand(1..10),
     description: Faker::Lorem.paragraph(sentence_count: 2),
     amenities: Faker::Lorem.words(number: rand(1..5)).join(', '),
-    images: image_url,
+    image: image_urls.sample,
     is_approved: [true, false].sample
   }
 end
 
-# Create 15 houses with random attributes
+# Create 15 houses with random attributes and image URLs
 15.times do
-  house_attributes = generate_house_attributes(image_urls.sample)
+  house_attributes = generate_house_attributes(image_urls)
   House.create(house_attributes)
 end
 
@@ -155,3 +154,28 @@ User.create!(
   password: 'timodongo',
   is_admin: true
 )
+
+User.create!(
+  name: 'christopher',
+  email: 'vuvumumo93@gmail.com',
+  phone_number: '0703660652',
+  password: 'christopher',
+  is_admin: true
+)
+
+User.create!(
+  name: 'macharia joseph ',
+  email: 'mjidris@gmail.com ',
+  phone_number: '074203627',
+  password: 'joseph67',
+  is_admin: true
+)
+
+User.create!(
+  name: 'Michal',
+  email: 'michal@gmail.com,',
+  phone_number: 'o741740811',
+  password: 'michal37',
+  is_admin: true
+)
+

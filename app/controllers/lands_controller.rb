@@ -68,10 +68,15 @@ class LandsController < ApplicationController
   
   # DELETE /lands/1
   def destroy
-      @land.destroy
+    @land = Land.find(params[:id])
+  
+    if @land.destroy
       render json: { message: 'Land deleted successfully' }
+    else
+      render json: { error: 'Failed to delete land' }, status: :unprocessable_entity
+    end
   end
-
+  
   # Additional Actions
 
   # Search lands by location

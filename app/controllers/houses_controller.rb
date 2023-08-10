@@ -16,8 +16,6 @@ class HousesController < ApplicationController
     render json: houses_needing_approval
   end
 
-
-
   def show
     render json: @house
   end

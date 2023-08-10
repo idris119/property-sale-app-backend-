@@ -44,13 +44,15 @@ class VehiclesController < ApplicationController
 
   # delete vehicle
   def destroy
+    @vehicle = Vehicle.find(params[:id])
+  
     if @vehicle.destroy
       head :no_content
     else
       render json: { error: "Failed to delete vehicle" }, status: :unprocessable_entity
     end
   end
-
+  
   def approve
     current_user = User.find_by(id: session[:user_id])
     if current_user.is_admin == true

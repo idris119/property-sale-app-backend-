@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   post "/make-mpesa-payment", to: "payments#create_payment"
   post "/make-visa-payment", to: "payments#create_payment"
   post "/make-paypal-payment", to: "payments#create_payment"
+  #deleting properties
+  delete '/deletevehicle/:id', to: 'vehicles#destroy'
+  delete '/deletehouse/:id', to: 'houses#destroy'
+  delete '/deleteland/:id', to: 'lands#destroy'
 
 
 

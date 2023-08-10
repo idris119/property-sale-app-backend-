@@ -17,21 +17,27 @@ class LandsController < ApplicationController
     render json: lands_needing_approval
   end
 
-    def approve
-      current_user=User.find_by(id: session[:user_id])
-      if current_user.is_admin==true
-        land = Land.find_by(id: params[:id]) 
-        if land
-            land.update(is_approved: true)
-            render json: {success: "land Approved... Can be seen by users"}, status: :created
-        else
-            render json: {error: "land not found"}, status: :not_found
-        end
+  def approve
+    current_user = User.find_by(id: session[:user_id])
+    if current_user.is_admin == true
+      land = Land.find_by(id: params[:id])
+      if land
+        land.update(is_approved: true) # Change 'approved' to 'is_approved'
+        render json: { success: "Land Approved... Can be seen by users" }, status: :created
       else
-          render json: {error: "Only admin can perform such operation"}, status: :not_found
+        render json: { error: "Land not found" }, status: :not_found
       end
+    else
+      render json: { error: "Only admin can perform such operation" }, status: :not_found
     end
-    
+  end
+
+  def approve
+    land = Land.find(params[:id])
+    land.update(is_approved: true)
+    render json: { message: "Land approved successfully" }
+  end
+  
   
   # GET /lands/1
   def show
@@ -57,6 +63,8 @@ class LandsController < ApplicationController
           render json: @land.errors, status: :unprocessable_entity
       end
   end
+
+   
   
   # DELETE /lands/1
   def destroy
@@ -103,6 +111,6 @@ class LandsController < ApplicationController
     end
   
   def land_params
-      params.require(:land).permit(:image, :name, :location, :size, :price, :description, :amenities, :proximity_to_road, :messaging)
+    params.require(:land).permit(:image, :name, :location, :size, :price, :description, :amenities, :proximity_to_road, :messaging)  
   end
 end

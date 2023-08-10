@@ -66,6 +66,13 @@ class VehiclesController < ApplicationController
     end
   end
 
+  def approve
+    vehicle = Vehicle.find(params[:id])
+    vehicle.update(is_approved: true)
+    render json: { message: "Vehicle approved successfully" }
+  end
+
+
   # Additional Actions
 
   # Search vehicles by location

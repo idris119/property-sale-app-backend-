@@ -48,19 +48,25 @@ class HousesController < ApplicationController
   end
 
   def approve
-    current_user=User.find_by(id: session[:user_id])
-    if current_user.is_admin==true
-      house = House.find_by(id: params[:id]) 
+    current_user = User.find_by(id: session[:user_id])
+    if current_user.is_admin == true
+      house = House.find_by(id: params[:id])
       if house
-          house.update(is_approved: true)
-          render json: {success: "house Approved... Can be seen by users"}, status: :created
+        house.update(is_approved: true)
+        render json: { success: "House Approved... Can be seen by users" }, status: :created
       else
-          render json: {error: "house not found"}, status: :not_found
+        render json: { error: "House not found" }, status: :not_found
       end
     else
-        render json: {error: "Only admin can perform such operation"}, status: :not_found
+      render json: { error: "Only admin can perform such operation" }, status: :not_found
     end
   end
+
+  def approve
+    house = House.find(params[:id])
+    house.update(is_approved: true)
+    render json: { message: "House approved successfully" }
+  end   
 
   # Additional Actions
 

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'payments/create_payment'
   resources :houses
   resources :users
   resources :vehicles
@@ -23,6 +24,10 @@ Rails.application.routes.draw do
   get 'search/vehicles', to: 'vehicles#search'
   get 'search/land', to: 'land#search'
   get '/search', to: 'application#search'
+  post "/make-payment", to: "payments#create_payment"
+  post "/make-mpesa-payment", to: "payments#create_payment"
+  post "/make-visa-payment", to: "payments#create_payment"
+  post "/make-paypal-payment", to: "payments#create_payment"
 
 
 

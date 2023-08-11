@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   delete '/deletevehicle/:id', to: 'vehicles#destroy'
   delete '/deletehouse/:id', to: 'houses#destroy'
   delete '/deleteland/:id', to: 'lands#destroy'
+   
+  get "*parts" , to: "react#index"
 
 
 

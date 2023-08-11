@@ -9,9 +9,12 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
+# development:
+# url: 'postgresql://saledb_user:6JtN0b9Q0VCCXUwJf7cQ2CoZ5Mi6KPqF@dpg-cjatfajbq8nc739ch6fg-a.oregon-postgres.render.com/saledb'
+  # <<: *default
+  # database: db/development.sqlite3
 development:
-  <<: *default
-  database: db/development.sqlite3
+  url: 'postgres://saledb_user:6JtN0b9Q0VCCXUwJf7cQ2CoZ5Mi6KPqF@dpg-cjatfajbq8nc739ch6fg-a/saledb'
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
